@@ -1,7 +1,12 @@
+import HealthCheck from './components/HealthCheck'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 export default function App() {
   return (
-    <div>
-      <h1>Hello, World!</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/health" element={<HealthCheck />} />
+      </Routes>
+    </Router>
   )
 }
