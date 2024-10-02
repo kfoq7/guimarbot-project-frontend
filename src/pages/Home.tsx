@@ -7,6 +7,8 @@ export const Home: React.FC = () => {
     <>
       <Guimarbot />
       <Hero />
+
+      <main></main>
     </>
   )
 }

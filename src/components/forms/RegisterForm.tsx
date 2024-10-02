@@ -1,9 +1,11 @@
 import { useState } from 'react'
 import { Input } from '@components/ui'
 import { AuthRegister } from '@/types'
+import { useAuth } from '@hooks/auth'
 
 export const RegisterForm: React.FC = () => {
   const [user, setUser] = useState<AuthRegister>({ username: '', email: '', password: '' })
+  const { register } = useAuth()
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -17,9 +19,9 @@ export const RegisterForm: React.FC = () => {
   return (
     <form>
       <Input
-        label="Nombre de usuario o correo"
-        type="email"
-        name="email"
+        label="Nombre nombre de usuario"
+        type="text"
+        name="username"
         placeholder="Ingrese su nombre o correo electronico"
         onChange={handleOnChange}
       />
@@ -33,10 +35,10 @@ export const RegisterForm: React.FC = () => {
       />
 
       <Input
-        label="correo"
-        type="email"
-        name="email"
-        placeholder="Ingrese su correo electronico"
+        label="Contraseña"
+        type="password"
+        name="password"
+        placeholder="Ingrese se constraseña"
         onChange={handleOnChange}
       />
 
@@ -46,7 +48,7 @@ export const RegisterForm: React.FC = () => {
         onClick={e => {
           e.preventDefault()
 
-          login(user)
+          register(user)
         }}
       >
         Iniciar sesión

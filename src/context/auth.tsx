@@ -1,16 +1,19 @@
 import { createContext, useState } from 'react'
 import { useLogin } from '@hooks/auth/use-login'
-import { Auth, User } from '@/types'
+import { useRegsiter } from '@hooks/auth/use-register'
+import { Auth, AuthRegister, User } from '@/types'
 
 interface IAuthContext {
   user?: User
   login: (data: Auth) => void
+  register: (data: AuthRegister) => void
 }
 
 export const AuthContext = createContext<IAuthContext | null>(null)
 
 export function AuthProvider({ children }: { readonly children: React.ReactNode }) {
   const { loginMutate } = useLogin()
+  const { registerMutate } = useRegsiter()
 
   const [user, setUser] = useState<User>()
 
@@ -22,5 +25,13 @@ export function AuthProvider({ children }: { readonly children: React.ReactNode 
     })
   }
 
-  return <AuthContext.Provider value={{ user, login }}>{children}</AuthContext.Provider>
+  const register = (data: AuthRegister) => {
+    registerMutate(data, {
+      onSuccess: ({ data }) => {
+        setUser(data)
+      },
+    })
+  }
+
+  return <AuthContext.Provider value={{ user, login, register }}>{children}</AuthContext.Provider>
 }
