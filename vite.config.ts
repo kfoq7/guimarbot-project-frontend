@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import vercel from 'vite-plugin-vercel'
 import path from 'node:path'
 
 export default defineConfig({
@@ -14,5 +15,5 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     },
   },
-  plugins: [react()],
+  plugins: [react(), vercel()],
 })
