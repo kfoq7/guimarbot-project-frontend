@@ -14,9 +14,6 @@ importers:
       axios:
         specifier: ^1.7.7
         version: 1.7.7
-      project-manager:
-        specifier: 'file:'
-        version: 'file:'
       react:
         specifier: ^18.3.1
         version: 18.3.1
@@ -1175,9 +1172,6 @@ packages:
     engines: {node: '>=14'}
     hasBin: true
 
-  'project-manager@file:':
-    resolution: {directory: '', type: directory}
-
   proxy-from-env@1.1.0:
     resolution: {integrity: sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==}
 
@@ -2328,16 +2322,6 @@ snapshots:
       prettier: 3.3.3
 
   prettier@3.3.3: {}
-
-  'project-manager@file:':
-    dependencies:
-      '@tanstack/react-query': 5.56.2(react@18.3.1)
-      axios: 1.7.7
-      react: 18.3.1
-      react-dom: 18.3.1(react@18.3.1)
-      react-router-dom: 6.26.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
-    transitivePeerDependencies:
-      - debug
 
   proxy-from-env@1.1.0: {}
 
