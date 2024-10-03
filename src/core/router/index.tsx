@@ -18,7 +18,7 @@ export default function AppRouter() {
         </Route>
 
         <Route element={<Layout />}>
-          <Route index path="/home" element={<Home />} />
+          <Route index path="/" element={<Home />} />
           <Route path="/health" element={<HealthCheck />} />
 
           <Route path="/course/:courseName" element={<Course />} />

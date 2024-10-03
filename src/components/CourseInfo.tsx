@@ -1,6 +1,7 @@
 import { Navigate, useParams } from 'react-router-dom'
-import { CourseVideo } from './CourseVideo'
+import { useCourse, useCourseData } from '@hooks/courses'
 import { Course } from '@/types'
+import { CourseVideo } from './CourseVideo'
 
 interface Props {
   href?: string
@@ -9,22 +10,23 @@ interface Props {
 
 export const CourseInfo: React.FC<Props> = () => {
   const { courseName } = useParams()
+  const { course } = useCourseData(courseName)
 
-  if (!courseName) {
+  if (!course || !courseName) {
     return <Navigate to="" />
   }
+
+  const { price, title, description, teacherName } = course
 
   return (
     <>
       <CourseVideo courseName={courseName} />
 
       <div className="col-[1/2] row-[3/4] px-4">
-        <h1 className="text-2xl font-bold sm:text-3xl md:text-4xl">
-          Aprende lo ultimo de javascript (ES2023 & ES2024)
-        </h1>
-        <div>
+        <h1 className="text-2xl font-bold sm:text-3xl md:text-4xl">{title}</h1>
+        <div className="mt-6">
           <h2 className="text-lg font-bold md:text-xl">Description</h2>
-          {/* <div>{category}</div> */}
+          <p>{description}</p>
         </div>
       </div>
 
@@ -51,7 +53,7 @@ export const CourseInfo: React.FC<Props> = () => {
         </div>
       </div>
 
-      <div className="col-[1/2] row-[4/5] px-4 lg:col-[2/3] lg:row-[2/6] lg:px-0">
+      <div className="col-[1/2] row-[4/5] lg:col-[2/3] lg:row-[2/6] lg:pr-4">
         <section className="flex flex-col gap-4 rounded-3xl border p-5">
           <h3 className="text-lg font-bold md:text-xl">El curso incluye</h3>
           <ul className="flex flex-col gap-4">
@@ -64,12 +66,17 @@ export const CourseInfo: React.FC<Props> = () => {
               <span>Español</span>
             </li>
           </ul>
+          <span>Price: {price}</span>
+
+          <button className="w-full rounded-md border border-gray-200/90 bg-blue-500 px-4 py-2.5 text-white transition-transform duration-300 hover:scale-105">
+            Comprar
+          </button>
         </section>
         <section className="mt-8 flex flex-col gap-4">
           <h3 className="text-lg font-bold md:text-xl">Docente</h3>
           <header className="flex gap-3">
             <div>
-              <h4>Miguel Angle</h4>
+              <h4>{teacherName}</h4>
               <p>Creador de contendio</p>
             </div>
           </header>

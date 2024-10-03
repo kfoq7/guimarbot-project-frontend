@@ -1,22 +1,24 @@
+import { Link } from 'react-router-dom'
+
 const links = [
   {
     to: '#',
-    name: 'home',
+    name: 'Home',
   },
   {
     to: '#courses',
-    name: 'cursos',
+    name: 'Cursos',
   },
   {
     to: '#foros',
-    name: 'foros',
+    name: 'Foros',
   },
 ]
 
 export const Header: React.FC = () => {
   return (
-    <header className="fixed z-[99999] w-full overflow-visible py-6">
-      <div className="mx-auto grid max-w-screen-xl grid-cols-[auto_1fr] items-center justify-center gap-x-10 md:flex md:justify-normal">
+    <header className="fixed z-[99999] w-full overflow-visible py-6 backdrop-blur-sm">
+      <div className="mx-auto grid max-w-screen-2xl grid-cols-[auto_1fr] items-center justify-center gap-x-10 md:flex md:justify-normal">
         <div className="flex justify-start md:flex-grow md:basis-0">
           <a href="#" className="ml-6">
             Logo
@@ -37,9 +39,12 @@ export const Header: React.FC = () => {
         </nav>
 
         <div className="mr-4 flex items-center justify-end gap-4 md:flex-grow md:basis-0">
-          <button className="border-gray-400-500 rounded-md border px-4 py-2 hover:bg-gray-200/60">
+          <Link
+            to="/login"
+            className="border-gray-400-500 flex items-center justify-center rounded-md border bg-blue-500 px-4 py-2.5 text-lg leading-none text-white shadow-md transition-transform duration-300 hover:scale-105"
+          >
             Aprende ahora
-          </button>
+          </Link>
         </div>
       </div>
     </header>

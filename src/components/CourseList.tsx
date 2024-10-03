@@ -7,9 +7,9 @@ interface Props {
 
 export const CourseList: React.FC<Props> = ({ courses }) => {
   return (
-    <ul className="grid grid-cols-4 gap-5">
+    <ul className="grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-4">
       {courses.map(course => (
-        <CourseCard course={course} />
+        <CourseCard key={course.id} course={course} />
       ))}
     </ul>
   )

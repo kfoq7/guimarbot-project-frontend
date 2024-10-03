@@ -9,14 +9,7 @@ interface ICoureContext {
 export const CourseContext = createContext<ICoureContext | null>(null)
 
 export function CourseProvider({ children }: { readonly children: React.ReactNode }) {
-  const [courses, setCourses] = useState<Course[]>([
-    {
-      id: 1,
-      category: 'asdf',
-      price: 12,
-      title: 'Curso 1',
-    },
-  ])
+  const [courses, setCourses] = useState<Course[]>([])
 
   // const { courses: courseList } = useListCourse()
 
