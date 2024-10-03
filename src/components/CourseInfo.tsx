@@ -1,15 +1,17 @@
 import { Navigate, useParams } from 'react-router-dom'
 import { CourseVideo } from './CourseVideo'
+import { Course } from '@/types'
 
 interface Props {
   href?: string
+  course: Course
 }
 
 export const CourseInfo: React.FC<Props> = () => {
   const { courseName } = useParams()
 
   if (!courseName) {
-    return <Navigate to="/404" />
+    return <Navigate to="" />
   }
 
   return (
@@ -22,6 +24,7 @@ export const CourseInfo: React.FC<Props> = () => {
         </h1>
         <div>
           <h2 className="text-lg font-bold md:text-xl">Description</h2>
+          {/* <div>{category}</div> */}
         </div>
       </div>
 
